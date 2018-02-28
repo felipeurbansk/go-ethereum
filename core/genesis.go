@@ -158,10 +158,10 @@ func SetupGenesisBlock(db ethdb.Database, genesis *Genesis) (*params.ChainConfig
 	stored := GetCanonicalHash(db, 0)
 	if (stored == common.Hash{}) {
 		if genesis == nil {
-			log.Info("Writing default main-net genesis block")
+			log.Info("Escrevendo o bloco genesis padrão da main-net")
 			genesis = DefaultGenesisBlock()
 		} else {
-			log.Info("Writing custom genesis block")
+			log.Info("Escrevendo bloco genesis personalizado")
 		}
 		block, err := genesis.Commit(db)
 		return genesis.Config, block.Hash(), err
