@@ -94,7 +94,7 @@ func (journal *txJournal) load(add func(*types.Transaction) error) error {
 			continue
 		}
 	}
-	log.Info("Loaded local transaction journal", "transactions", total, "dropped", dropped)
+	log.Info("Diário de transações locais carregado", "transações", total, "apagados", dropped)
 
 	return failure
 }
@@ -146,7 +146,7 @@ func (journal *txJournal) rotate(all map[common.Address]types.Transactions) erro
 		return err
 	}
 	journal.writer = sink
-	log.Info("Regenerated local transaction journal", "transactions", journaled, "accounts", len(all))
+	log.Info("Diário de transações locais regerados", "transações", journaled, "contas", len(all))
 
 	return nil
 }
