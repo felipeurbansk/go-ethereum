@@ -11,7 +11,7 @@ geth --datadir "<<caminho para o diretorio onde você vai armazenar os dados do 
 ## Exemplos
 
 ### Inicializando uma rede com arquivo Genesis personalizado
-geth --datadir "/Users/jeffprestes/teste_ethereum_4" --networkid="15397" --identity "jeffcoin" init "/Users/jeffprestes/teste_ethereum_4/genesis.json"
+geth --datadir "/Users/jeffprestes/ethereum7masters" --networkid="15397" --identity "jeffcoin" init "/Users/jeffprestes/ethereum7masters/genesis.json"
 
 ### Subindo um nó da rede recem criada na sua maquina
-geth --datadir "/Users/jeffprestes/teste_ethereum_3" --networkid="15397" --ws --wsaddr "127.0.0.1" --identity "jeffcoin" --rpc --rpcaddr "127.0.0.1" --rpccorsdomain "*" --wsapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --rpcapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3"
+geth --datadir "/Users/jeffprestes/ethereum7masters" --networkid="15397" --ws --wsaddr "127.0.0.1" --identity "jeffcoin" --rpc --rpcaddr "127.0.0.1" --rpccorsdomain "*" --wsapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --rpcapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3"
