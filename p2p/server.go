@@ -739,7 +739,7 @@ type tempError interface {
 // inbound connections.
 func (srv *Server) listenLoop() {
 	defer srv.loopWG.Done()
-	srv.log.Info("RLPx esta escutando ", "self", srv.makeSelf(srv.listener, srv.ntab))
+	srv.log.Info("RLPx esta escutando ", "endereço do nó eletronico local", srv.makeSelf(srv.listener, srv.ntab))
 
 	tokens := defaultMaxPendingPeers
 	if srv.MaxPendingPeers > 0 {
