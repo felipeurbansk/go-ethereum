@@ -392,7 +392,7 @@ func (srv *Server) Start() (err error) {
 	if srv.log == nil {
 		srv.log = log.New()
 	}
-	srv.log.Info("Starting P2P networking")
+	srv.log.Info("Iniciando rede P2P...")
 
 	// static fields
 	if srv.PrivateKey == nil {
@@ -739,7 +739,7 @@ type tempError interface {
 // inbound connections.
 func (srv *Server) listenLoop() {
 	defer srv.loopWG.Done()
-	srv.log.Info("RLPx listener up", "self", srv.makeSelf(srv.listener, srv.ntab))
+	srv.log.Info("RLPx esta escutando ", "self", srv.makeSelf(srv.listener, srv.ntab))
 
 	tokens := defaultMaxPendingPeers
 	if srv.MaxPendingPeers > 0 {
