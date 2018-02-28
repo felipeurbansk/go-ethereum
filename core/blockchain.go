@@ -48,7 +48,7 @@ import (
 var (
 	blockInsertTimer = metrics.NewRegisteredTimer("chain/inserts", nil)
 
-	ErrNoGenesis = errors.New("Genesis not found in chain")
+	ErrNoGenesis = errors.New("Genesis não encontrado na cadeia de blocos")
 )
 
 const (
@@ -250,9 +250,9 @@ func (bc *BlockChain) loadLastState() error {
 	blockTd := bc.GetTd(currentBlock.Hash(), currentBlock.NumberU64())
 	fastTd := bc.GetTd(currentFastBlock.Hash(), currentFastBlock.NumberU64())
 
-	log.Info("Loaded most recent local header", "number", currentHeader.Number, "hash", currentHeader.Hash(), "td", headerTd)
-	log.Info("Loaded most recent local full block", "number", currentBlock.Number(), "hash", currentBlock.Hash(), "td", blockTd)
-	log.Info("Loaded most recent local fast block", "number", currentFastBlock.Number(), "hash", currentFastBlock.Hash(), "td", fastTd)
+	log.Info("O cabeçalho local mais recente foi carregado", "numero", currentHeader.Number, "hash", currentHeader.Hash(), "td", headerTd)
+	log.Info("O bloco completo local mais recente foi carregado", "numero", currentBlock.Number(), "hash", currentBlock.Hash(), "td", blockTd)
+	log.Info("O bloco rápido local mais recente foi carregado", "numero", currentFastBlock.Number(), "hash", currentFastBlock.Hash(), "td", fastTd)
 
 	return nil
 }
@@ -262,7 +262,7 @@ func (bc *BlockChain) loadLastState() error {
 // though, the head may be further rewound if block bodies are missing (non-archive
 // nodes after a fast sync).
 func (bc *BlockChain) SetHead(head uint64) error {
-	log.Warn("Rewinding blockchain", "target", head)
+	log.Warn("Voltando o blockchain", "target", head)
 
 	bc.mu.Lock()
 	defer bc.mu.Unlock()
@@ -836,13 +836,13 @@ func (bc *BlockChain) InsertReceiptChain(blockChain types.Blocks, receiptChain [
 	}
 	bc.mu.Unlock()
 
-	log.Info("Imported new block receipts",
-		"count", stats.processed,
-		"elapsed", common.PrettyDuration(time.Since(start)),
-		"number", head.Number(),
+	log.Info("Importado receita de novos blocos",
+		"contagem", stats.processed,
+		"tempo gasto", common.PrettyDuration(time.Since(start)),
+		"numero", head.Number(),
 		"hash", head.Hash(),
-		"size", common.StorageSize(bytes),
-		"ignored", stats.ignored)
+		"tamanho", common.StorageSize(bytes),
+		"ignorado", stats.ignored)
 	return 0, nil
 }
 
@@ -1224,7 +1224,7 @@ func (st *insertStats) report(chain []*types.Block, index int, cache common.Stor
 		if st.ignored > 0 {
 			context = append(context, []interface{}{"ignored", st.ignored}...)
 		}
-		log.Info("Imported new chain segment", context...)
+		log.Info("Importado novo segmento da cadeia de blocos", context...)
 
 		*st = insertStats{startTime: now, lastIndex: index + 1}
 	}
