@@ -163,7 +163,7 @@ func (n *Node) Start() error {
 		n.serverConfig.NodeDatabase = n.config.NodeDB()
 	}
 	running := &p2p.Server{Config: n.serverConfig}
-	n.log.Info("Starting peer-to-peer node", "instance", n.serverConfig.Name)
+	n.log.Info("Iniciando nó peer-to-peer", "instance", n.serverConfig.Name)
 
 	// Otherwise copy and specialize the P2P configuration
 	services := make(map[reflect.Type]Service)
@@ -310,6 +310,7 @@ func (n *Node) startIPC(apis []rpc.API) error {
 	if err != nil {
 		return err
 	}
+
 	n.ipcListener = listener
 	n.ipcHandler = handler
 	n.log.Info("IPC endpoint opened", "url", n.ipcEndpoint)
@@ -340,7 +341,8 @@ func (n *Node) startHTTP(endpoint string, apis []rpc.API, modules []string, cors
 	if err != nil {
 		return err
 	}
-	n.log.Info("HTTP endpoint opened", "url", fmt.Sprintf("http://%s", endpoint), "cors", strings.Join(cors, ","), "vhosts", strings.Join(vhosts, ","))
+	
+	n.log.Info("HTTP endpoint aberto", "url", fmt.Sprintf("http://%s", endpoint), "cors", strings.Join(cors, ","), "vhosts", strings.Join(vhosts, ","))
 	// All listeners booted successfully
 	n.httpEndpoint = endpoint
 	n.httpListener = listener
@@ -355,7 +357,7 @@ func (n *Node) stopHTTP() {
 		n.httpListener.Close()
 		n.httpListener = nil
 
-		n.log.Info("HTTP endpoint closed", "url", fmt.Sprintf("http://%s", n.httpEndpoint))
+		n.log.Info("HTTP endpoint fechado", "url", fmt.Sprintf("http://%s", n.httpEndpoint))
 	}
 	if n.httpHandler != nil {
 		n.httpHandler.Stop()
@@ -373,8 +375,11 @@ func (n *Node) startWS(endpoint string, apis []rpc.API, modules []string, wsOrig
 	if err != nil {
 		return err
 	}
-	n.log.Info("WebSocket endpoint opened", "url", fmt.Sprintf("ws://%s", listener.Addr()))
-	// All listeners booted successfully
+
+	
+	n.log.Info("WebSocket endpoint aberto", "url", fmt.Sprintf("ws://%s", listener.Addr()))
+
+  // All listeners booted successfully
 	n.wsEndpoint = endpoint
 	n.wsListener = listener
 	n.wsHandler = handler
@@ -388,7 +393,7 @@ func (n *Node) stopWS() {
 		n.wsListener.Close()
 		n.wsListener = nil
 
-		n.log.Info("WebSocket endpoint closed", "url", fmt.Sprintf("ws://%s", n.wsEndpoint))
+		n.log.Info("WebSocket endpoint fechado", "url", fmt.Sprintf("ws://%s", n.wsEndpoint))
 	}
 	if n.wsHandler != nil {
 		n.wsHandler.Stop()
