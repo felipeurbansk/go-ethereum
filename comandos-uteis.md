@@ -22,6 +22,9 @@ console
 geth --datadir "/Users/jeffprestes/ethereum7masters" --networkid="1337" --ws --wsaddr "127.0.0.1" --identity "jeffcoin" --rpc --rpcaddr "127.0.0.1" --rpccorsdomain "*" --wsapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --rpcapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --ipcpath "/Users/jeffprestes/Library/Ethereum/geth.ipc" --vmdebug --unlock "0x3096dc394a540d8f856c6840f84fe1d511c05d30" --password "/Users/jeffprestes/ethereum7masters/0x3096dc-senha.txt"
 
 
+geth --datadir "/Users/jeffprestes/ethereum7masters" --networkid="15" --ws --wsaddr "127.0.0.1" --identity "jeffcoin" --rpc --rpcaddr "127.0.0.1" --rpccorsdomain "*" --wsapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --rpcapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --ipcpath "/Users/jeffprestes/Library/Ethereum/geth.ipc" --vmdebug --unlock "0x3096dc394a540d8f856c6840f84fe1d511c05d30" --password "/Users/jeffprestes/ethereum7masters/0x3096dc-senha.txt"
+
+
 ### Conectando ao nó via console
 geth attach ipc:///Users/jeffprestes/Library/Ethereum/geth.ipc
 
