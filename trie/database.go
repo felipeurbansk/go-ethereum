@@ -645,13 +645,8 @@ func (db *Database) Commit(node common.Hash, report bool) error {
 	if !report {
 		logger = log.Debug
 	}
-<<<<<<< HEAD
-	logger("Trie persistido do banco de dados em memória", "nós", nodes-len(db.nodes), "tamanho", storage-db.nodesSize, "tempo", time.Since(start),
-		"gcnodes", db.gcnodes, "gcsize", db.gcsize, "gctime", db.gctime, "nós ativos", len(db.nodes), "tamanho nós ativos", db.nodesSize)
-=======
 	logger("Persisted trie from memory database", "nodes", nodes-len(db.nodes)+int(db.flushnodes), "size", storage-db.nodesSize+db.flushsize, "time", time.Since(start)+db.flushtime,
 		"gcnodes", db.gcnodes, "gcsize", db.gcsize, "gctime", db.gctime, "livenodes", len(db.nodes), "livesize", db.nodesSize)
->>>>>>> 1f0f6f0272c4c2f4b7b459835eff254f1f86784a
 
 	// Reset the garbage collection statistics
 	db.gcnodes, db.gcsize, db.gctime = 0, 0, 0
